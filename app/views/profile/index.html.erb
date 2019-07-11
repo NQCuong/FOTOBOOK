@@ -1,0 +1,185 @@
+<div class="row" style="background-color:rgb(248, 248, 248)">
+  <div class="col-1" style="min-height:1000px">
+    <div class="choice mt-5">
+      <a href="#">Feeds</a><br>
+      <a href="#">Discover</a>
+    </div>
+  </div>
+  <div class="col-10 mt-4" style="background-color:white">
+    <div class="row">
+      <div class="profile d-inline-flex w-100 mt-5">
+        <div class="col-3">
+          <img src="/assets/av6.jpg" class="rounded-circle ml-5" style="width:140px;height:140px">
+        </div>
+        <div class="col-9">
+        <!-- Nav tabs -->
+          <button class="btn btn-primary rounded-lg">flowwing</button>
+          <h2 class="User Name">Cuong Nguyen</h2>
+          <ul class="nav nav-tabs ">
+            <li class="nav-item">
+              <a class="nav-link active " data-toggle="tab" href="#photos">999 PHOTOS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#albums">33 ALBUMS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " data-toggle="tab" href="#followings">1 FOLLOWINGS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#followers">1.7K FOLLOWERS</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="tab-content">
+      <div id="photos" class="container-fluid tab-pane active"><br>
+        <div class="row d-inline-flex">
+          <% for photos in @photo%>
+          <div class="container1  w-25 p-3">
+            <img src="<%=photos.image.url%>"style="width:100%;height:180px;cursor:pointer" onclick="onClick(this)"class="modal-hover-opacity rounded-lg">
+            <div class="title p-2 text-center">
+              <p><%= photos.description %></p>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <div id="albums" class="container-fluid tab-pane fade"><br>
+
+      </div>
+      <div id="followings" class="container-fluid tab-pane fade"><br>
+        <div class="row">
+          <div class="w-25 p-2">
+            <div style="background:rgb(248, 248, 248);height:240px">
+              <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
+                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
+              </div>
+              <div class="name text-center"style="height:120px">
+                <span>Cuong Nguyen</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-25 p-2">
+            <div style="background:rgb(248, 248, 248);height:240px">
+              <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
+                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
+              </div>
+              <div class="name text-center"style="height:120px">
+                <span>Cuong Nguyen</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-25 p-2">
+            <div style="background:rgb(248, 248, 248);height:240px">
+             <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
+                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
+              </div>
+              <div class="name text-center"style="height:120px">
+                <span>Cuong Nguyen</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-25 p-2">
+            <div style="background:rgb(248, 248, 248);height:240px">
+              <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
+                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
+              </div>
+              <div class="name text-center"style="height:120px">
+                <span>Cuong Nguyen</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-25 p-2">
+            <div style="background:rgb(248, 248, 248);height:240px">
+              <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
+                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
+              </div>
+              <div class="name text-center"style="height:120px">
+                <span>Cuong Nguyen</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="followers" class="container-fluid tab-pane fade"style="display:block"><br>
+        <div class="row">
+          <div class="w-25 p-2">
+            <div style="background:rgb(248, 248, 248);height:240px">
+              <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
+                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
+              </div>
+              <div class="name text-center"style="height:120px">
+                <span>Cuong Nguyen</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-25 p-2">
+            <div style="background:rgb(248, 248, 248);height:240px">
+              <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
+                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
+              </div>
+              <div class="name text-center"style="height:120px">
+                <span>Cuong Nguyen</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-25 p-2">
+            <div style="background:rgb(248, 248, 248);height:240px">
+              <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
+                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
+              </div>
+              <div class="name text-center"style="height:120px">
+                <span>Cuong Nguyen</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-25 p-2">
+            <div style="background:rgb(248, 248, 248);height:240px">
+              <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
+                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
+              </div>
+              <div class="name text-center"style="height:120px">
+                <span>Cuong Nguyen</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-25 p-2">
+            <div style="background:rgb(248, 248, 248);height:240px">
+             <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
+                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
+              </div>
+              <div class="name text-center"style="height:120px">
+                <span>Cuong Nguyen</span>
+              </div>
+              <div class="username">
+                cuong
+              </div>
+              <div class="PHOTO-ALBUM">
+                cuong   cuong
+              </div>
+              <button class="btn btn-primary rounded-lg">Following</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-1">
+
+  </div>
+</div>
+<div id="modal01" class="modal" onclick="this.style.display='none'">
+  <span class="close">&times;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  <div class="modal-content">
+    <img id="img01" style="width:100%;">
+  </div>
+</div>
+
+
+<script>function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+
+}
+</script>
