@@ -14,7 +14,7 @@
         <div class="col-9">
         <!-- Nav tabs -->
           <button class="btn btn-primary rounded-lg">flowwing</button>
-          <h2 class="User Name">Cuong Nguyen</h2>
+          <h2 class="User Name"><%=current_user.firstname + current_user.lasttname %></h2>
           <ul class="nav nav-tabs ">
             <li class="nav-item">
               <a class="nav-link active " data-toggle="tab" href="#photos">999 PHOTOS</a>
@@ -46,7 +46,19 @@
         </div>
       </div>
       <div id="albums" class="container-fluid tab-pane fade"><br>
-
+        <div class="row d-inline-flex">
+          <% for albums in @album%>
+          <%images = albums.album_images%>
+          <div class="container1 w-25 p-3 " >
+            <%for image in images%>
+              <img src="<%=image.image.url%>"style="width: 30%; height: 30%" onclick="onClick(this)"class=" img-fluid modal-hover-opacity rounded-lg img-thumbnail   cc">
+            <%end%>
+            <div class="title p-2 text-center">
+              <p><%= albums.description %></p>
+            </div>
+          </div>
+          <% end %>
+        </div>
       </div>
       <div id="followings" class="container-fluid tab-pane fade"><br>
         <div class="row">
@@ -104,26 +116,6 @@
       </div>
       <div id="followers" class="container-fluid tab-pane fade"style="display:block"><br>
         <div class="row">
-          <div class="w-25 p-2">
-            <div style="background:rgb(248, 248, 248);height:240px">
-              <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
-                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
-              </div>
-              <div class="name text-center"style="height:120px">
-                <span>Cuong Nguyen</span>
-              </div>
-            </div>
-          </div>
-          <div class="w-25 p-2">
-            <div style="background:rgb(248, 248, 248);height:240px">
-              <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
-                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
-              </div>
-              <div class="name text-center"style="height:120px">
-                <span>Cuong Nguyen</span>
-              </div>
-            </div>
-          </div>
           <div class="w-25 p-2">
             <div style="background:rgb(248, 248, 248);height:240px">
               <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">

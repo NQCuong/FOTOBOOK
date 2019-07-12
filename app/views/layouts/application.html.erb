@@ -41,9 +41,14 @@
                 <%end%>
               </div>
               <div class="col-6">
-                <%= link_to 'feed', feed_index_path %>
-                <%= link_to 'Add book', new_photo_path %>
-                <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+                <%= link_to 'Feed', feed_index_path %>
+                <%= link_to 'Add Photo', new_photo_path %>
+                <%= link_to 'Add Album', new_album_path %>
+                <% if user_signed_in? == false %>
+                  <%= link_to 'Login' , new_user_session_path%>
+                  <% else %>
+                    <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+                <%end%>
               </div>
             </div>
           </div>

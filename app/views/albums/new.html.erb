@@ -7,9 +7,8 @@
     </div>
   </div>
   <div class="col-10 mt-4" style="background-color:white">
-
-    <%= form_for @photo do |f| %>
-    <p>New Photo</p>
+    <%= form_for(@album, html: {multipart: true}) do |f| %>
+    <p>New Album</p>
     <div class="border border-bottom-1 my-4"></div>
       <div class="row">
         <div class="col-6">
@@ -25,7 +24,7 @@
             </select>
           </div>
           <div>
-            <%= f.file_field :image , class: "m-5"%>
+             <%= file_field_tag "images[]", type: :file, multiple: true, class: "m-5"%>
           </div>
           <%= f.submit "Save" , class: "btn btn-success mt-5"%>
         </div>
