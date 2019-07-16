@@ -85,12 +85,13 @@
     ```
 
     - app/controllers/albums_controller.rb: tương tự trên
-
+    Done !!!
 5. Hạn chế sử dụng inline css/js
 
     - app/views/albums/new.html.erb
     - app/views/feed/index.html.erb
     - ... các file view khác
+    Done !!!
 
 6. Sử dụng resource trong route. Hạn chế sử dụng custom route nếu ko cần thiết.
 
@@ -101,3 +102,4 @@
 8. Hạn chế sử dụng external assets => download những assets này về và đưa vào asset pipeline của Rails
 
     - app/views/layouts/application.html.erb
+    Done !!!
