@@ -96,6 +96,7 @@
 6. Sử dụng resource trong route. Hạn chế sử dụng custom route nếu ko cần thiết.
 
     - config/routes.rb: line 2-4
+    Done !!!
 
 7. Migration lỗi
 
