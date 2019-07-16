@@ -24,6 +24,7 @@
     ```
 
     - config/routes.rb: line 10-11: indent nhìn lung tung quá. Lien 22 cũng vậy.
+    Done !!!
 
 2. Code dư thừa ko cần thiết
 
