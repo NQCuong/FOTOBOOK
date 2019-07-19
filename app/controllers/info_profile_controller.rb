@@ -3,6 +3,8 @@ class InfoProfileController < ApplicationController
     @users = User.find(params[:format])
     @photos =  @users.photos.all
     @albums =  @users.albums.all
+    @followings = @users.following
+    @followers = @users.followers
   end
 
   def follow

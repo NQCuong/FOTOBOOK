@@ -5,9 +5,6 @@ class AlbumsController < ApplicationController
     @albums = Album.new
   end
 
-  def show
-  end
-
   def create
     @albums = current_user.albums.build(albums_params)
     respond_to do |format|

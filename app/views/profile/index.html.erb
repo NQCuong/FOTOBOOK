@@ -13,6 +13,7 @@
         </div>
         <div class="col-9">
         <!-- Nav tabs -->
+          <button><a href="<%=edit_profile_path(current_user)%>">Edit Profile</a></button>
           <h2 ><%=current_user.lastname + " " + current_user.firstname%></h2>
           <ul class="nav nav-tabs ">
             <li class="nav-item">
@@ -22,10 +23,10 @@
               <a class="nav-link" data-toggle="tab" href="#albums"><%=@albums.count%> ALBUMS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " data-toggle="tab" href="#followings">1 FOLLOWINGS</a>
+              <a class="nav-link " data-toggle="tab" href="#followings"><%=@followings.count%> FOLLOWINGS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#followers">1.7K FOLLOWERS</a>
+              <a class="nav-link" data-toggle="tab" href="#followers"><%=@followers.count%> FOLLOWERS</a>
             </li>
           </ul>
         </div>
@@ -63,56 +64,18 @@
       </div>
       <div id="followings" class="container-fluid tab-pane fade"><br>
         <div class="row">
+        <%for following in @followings%>
           <div class="w-25 p-2">
             <div style="background:rgb(248, 248, 248);height:240px">
               <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
                 <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
               </div>
               <div class="name text-center"style="height:120px">
-                <span>Cuong Nguyen</span>
+
               </div>
             </div>
           </div>
-          <div class="w-25 p-2">
-            <div style="background:rgb(248, 248, 248);height:240px">
-              <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
-                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
-              </div>
-              <div class="name text-center"style="height:120px">
-                <span>Cuong Nguyen</span>
-              </div>
-            </div>
-          </div>
-          <div class="w-25 p-2">
-            <div style="background:rgb(248, 248, 248);height:240px">
-             <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
-                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
-              </div>
-              <div class="name text-center"style="height:120px">
-                <span>Cuong Nguyen</span>
-              </div>
-            </div>
-          </div>
-          <div class="w-25 p-2">
-            <div style="background:rgb(248, 248, 248);height:240px">
-              <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
-                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
-              </div>
-              <div class="name text-center"style="height:120px">
-                <span>Cuong Nguyen</span>
-              </div>
-            </div>
-          </div>
-          <div class="w-25 p-2">
-            <div style="background:rgb(248, 248, 248);height:240px">
-              <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
-                <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
-              </div>
-              <div class="name text-center"style="height:120px">
-                <span>Cuong Nguyen</span>
-              </div>
-            </div>
-          </div>
+        <%end%>
         </div>
       </div>
       <div id="followers" class="container-fluid tab-pane fade"style="display:block"><br>
