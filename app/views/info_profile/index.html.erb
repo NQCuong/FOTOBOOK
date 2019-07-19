@@ -1,7 +1,7 @@
 <div class="row" style="background-color:rgb(248, 248, 248)">
   <div class="col-1" style="min-height:1000px">
     <div class="choice mt-5">
-      <a href="<%=feed_index_path%>" >Feed</a>
+      <%= link_to 'Feed', feed_index_path %>
       <a href="#">Discover</a>
     </div>
   </div>
@@ -13,7 +13,18 @@
         </div>
         <div class="col-9">
         <!-- Nav tabs -->
-          <h2 ><%=current_user.lastname + " " + current_user.firstname%></h2>
+        <%if current_user.following.include?(@users) == false%>
+          <%= form_tag('/follow') do %>
+            <div><%= hidden_field_tag :following_id, @users.id %></div>
+            <button type="submit" class="btn btn-primary">Follow</button>
+          <% end %>
+        <%else%>
+          <%= form_tag('/unfollow') do %>
+            <div><%= hidden_field_tag :following_id, @users.id %></div>
+            <button type="submit" class="btn btn-primary">UnFollow</button>
+          <% end %>
+        <%end%>
+          <h2 ><%=@users.lastname + " " + @users.firstname%></h2>
           <ul class="nav nav-tabs ">
             <li class="nav-item">
               <a class="nav-link active " data-toggle="tab" href="#photos"><%=@photos.count%> PHOTOS</a>

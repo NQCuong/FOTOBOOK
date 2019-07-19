@@ -19,10 +19,9 @@ gem 'devise'
 gem "bootstrap", "~> 4.0.0"
 gem 'jquery-rails'
 gem 'rails-ujs', '~> 0.1.0'
-gem "font-awesome-rails"
+gem 'font-awesome-sass'
 gem "paperclip"
 gem "toastr-rails"
-gem 'dropzonejs-rails'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

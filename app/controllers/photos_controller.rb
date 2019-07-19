@@ -1,35 +1,28 @@
 class PhotosController < ApplicationController
   before_action :authenticate_user!
-  def index
-    @photo = Photo.order('created_at DESC')
-  end
 
   def new
-    @photo = Photo.new
+    @photos = Photo.new
   end
 
   def show
   end
 
   def create
-    @photo = Photo.new(photo_params)
-    @photo.user_id = current_user.id
-    if @photo.title.empty? | @photo.description.empty?
-      flash[:warning] = "Title or Description was empty!"
-      redirect_to new_photo_path
-    else @photo.save
+    @photos = current_user.photos.build(photos_params)
+    if @photos.save
       flash[:success] = "Photo has been added"
       redirect_to profile_index_path
+    else @photos.save
+      flash[:warning] = @photos.errors.full_messages.joins('. ')
+      redirect_to :new
     end
   end
 
   private
 
-  def photo_params
+  def photos_params
     params.require(:photo).permit(:title, :image, :description)
   end
 
-  def set_photo
-    @photo = Photo.find(params[:id])
-  end
 end

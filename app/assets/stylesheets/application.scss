@@ -13,6 +13,8 @@
 
  *= require_self
  *= require toastr
- *= require dropzone/dropzone
   *= require_tree .
  */
+ @import "bootstrap";
+ @import "font-awesome-sprockets";
+ @import "font-awesome";

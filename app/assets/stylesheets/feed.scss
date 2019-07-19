@@ -4,67 +4,57 @@
 // Place all the styles related to the Feed controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-*
-{
+*{
   box-sizing: border-box;
 }
-body
-{
-    margin: 0;
-    padding: 0;
+body{
+  margin: 0;
+  padding: 0;
 }
-nav
-{
-    background-color: rgb(67, 74, 153);
+nav{
+  background-color: rgb(67, 74, 153);
 }
-nav a
-{
-    color: white;
-    font-weight: bold;
-    font-size: calc(0.65em + 0.65vw);
+nav a{
+  color: white;
+  font-weight: bold;
+  font-size: calc(0.65em + 0.65vw);
 }
-nav a:hover
-{
-    text-decoration: none;
-    color:white;
+nav a:hover{
+  text-decoration: none;
+  color:white;
 }
-.input::placeholder
-{
-    font-size: calc(0.55em + 0.55vw);
-    padding-left: 10px;
-    opacity: 0.3;
+a:hover{
+  text-decoration: none;
 }
-.form-head p
-{
-    color: rgb(67, 74, 153);
-    font-weight: bold;
-    font-size: calc(1em + 1vw);
+.input::placeholder{
+  font-size: calc(0.55em + 0.55vw);
+  padding-left: 10px;
+  opacity: 0.3;
 }
-img
-{
-    width: 70%;
-    height: 70%;
+.form-head p{
+  color: rgb(67, 74, 153);
+  font-weight: bold;
+  font-size: calc(1em + 1vw);
 }
-.form-body
-{
-    background-color: rgb(244, 244, 244);
-    border-radius: 12px;
-    margin: 0 20% 0 20%;
+img{
+  width: 70%;
+  height: 70%;
 }
-form
-{
-    padding: 5% 10% 0 10%;
+.form-body{
+  background-color: rgb(244, 244, 244);
+  border-radius: 12px;
+  margin: 0 20% 0 20%;
 }
-.profile-img
-{
-    width: 27%;
-    height: 20%;
-    margin: auto;
-    margin-bottom: 15%;
-    display: block;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
+form{
+  padding: 5% 10% 0 10%;
+}
+.profile-img{
+  width: 27%;
+  height: 20%;
+  margin: auto;
+  margin-bottom: 15%;
+  display: block;
+  border-radius: 50%;
 }
 #myImg {
   border-radius: 5px;
