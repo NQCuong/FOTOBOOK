@@ -117,6 +117,7 @@
     - app/controllers/photos_controller.rb: controller này cái name của `@photo` lần review trước chỉ sai ở action `index`, bữa nay sai hết ráo vây!
     - app/controllers/relationships_controller.rb
 
+Done!!!
 
 2. Code dư thừa:
 
@@ -128,7 +129,7 @@
     - app/controllers/feed_controller.rb#index: sau dấu `=` cần có 1 space
     - app/controllers/info_profile_controller.rb: sau dấu `=` chỗ thì 1 space, chỗ thì 2 spaces. Blank line tuỳ ngẫu hứng, ko thấy có sự consistent gì hết. Sau dấu `,` cần có 1 space
     - app/views/feed/index.html.erb: trước và sau Ruby embeded code cần có space. E.g: `<%=feed_index_path%>` => `<%= feed_index_path %>`
-
+Done!!!
 4. Code khó hiểu:
 
     - app/controllers/info_profile_controller.rb#index: `@users = User.find(params[:format])` => thường người ta `find` bởi `params[:id]`, hay `params[:user_id]` gì đó, ở đây dùng `params[:format]` nghe lạ lạ?
@@ -137,7 +138,7 @@
 5. Không nên sửa dụng `.where.first` để tìm 1 record nào đó. Vì câu này sẽ perform 1 câu mệnh đề `order` ở database server ko cần thiết. Khi cần tìm 1 record thì dùng `find_by`.
 
     - app/controllers/info_profile_controller.rb#unfollow: `where(follower_id: current_user.id).where(following_id: params[:following_id]).first` => `find_by(follower_id: current_user.id, following_id: params[:following_id])`
-
+Done!!!
 6. Cần đảm bảo tính đúng đắn của dữ liệu
 
     - app/controllers/info_profile_controller.rb#follow: nên check xem `current_user` có follow thằng user đang muốn follow chưa, có rồi thì ignore request này đi, chưa có thì tiến hành follow. User nó có nhiều cách gởi request lên server mà vượt qua được validate ở dưới client, nên server cần check lại lần nữa để chắc chắn.
@@ -165,7 +166,7 @@
 
 11. Code tào lao
     - app/views/info_profile/index.html.erb: `current_user.following.include?(@users) == false` => bản thân method `include?` nó return về `true|false` rồi thì `if/unless` trên kết quả trả về chứ ai lại đi compare với `true|false` nữa.
-
+Done!!!
 12. Ko dùng thẻ `img` với attribute `source` là raw text như vậy được. Khi chạy ở mode production hay deploy lên heroku sẽ ko work. Cách làm này chỉ work ở local development environment
 
     - app/views/info_profile/index.html.erb
