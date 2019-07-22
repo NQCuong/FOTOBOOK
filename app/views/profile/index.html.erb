@@ -1,7 +1,7 @@
 <div class="row" style="background-color:rgb(248, 248, 248)">
   <div class="col-1" style="min-height:1000px">
     <div class="choice mt-5">
-      <a href="<%=feed_index_path%>" >Feed</a>
+      <a href="<%= feed_index_path %>" >Feed</a>
       <a href="#">Discover</a>
     </div>
   </div>
@@ -13,20 +13,20 @@
         </div>
         <div class="col-9">
         <!-- Nav tabs -->
-          <button><a href="<%=edit_profile_path(current_user)%>">Edit Profile</a></button>
-          <h2 ><%=current_user.lastname + " " + current_user.firstname%></h2>
+          <button><a href="<%= edit_user_registration_path %>">Edit Profile</a></button>
+          <h2 ><%= current_user.lastname + " " + current_user.firstname %></h2>
           <ul class="nav nav-tabs ">
             <li class="nav-item">
-              <a class="nav-link active " data-toggle="tab" href="#photos"><%=@photos.count%> PHOTOS</a>
+              <a class="nav-link active " data-toggle="tab" href="#photos"><%= @photos.count %> PHOTOS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#albums"><%=@albums.count%> ALBUMS</a>
+              <a class="nav-link" data-toggle="tab" href="#albums"><%= @albums.count %> ALBUMS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " data-toggle="tab" href="#followings"><%=@followings.count%> FOLLOWINGS</a>
+              <a class="nav-link " data-toggle="tab" href="#followings"><%= @followings.count %> FOLLOWINGS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#followers"><%=@followers.count%> FOLLOWERS</a>
+              <a class="nav-link" data-toggle="tab" href="#followers"><%= @followers.count %> FOLLOWERS</a>
             </li>
           </ul>
         </div>
@@ -36,9 +36,10 @@
       <div id="photos" class="container-fluid tab-pane active"><br>
       <%= link_to 'Add Photo', new_photo_path %>
         <div class="row d-flex">
-          <% for photo in @photos%>
+          <% for photo in @photos %>
           <div class="container1  w-25 p-3">
-            <img src="<%=photo.image.url%>"style="width:100%;height:180px;cursor:pointer" onclick="onClick(this)"class="modal-hover-opacity rounded-lg">
+            <img src="<%= photo.image.url %>"style="width:100%;height:180px;cursor:pointer" onclick="onClick(this)"class="modal-hover-opacity rounded-lg">
+            <%= link_to 'Edit Photo',edit_photo_path(photo.id)%>
             <div class="title p-2 text-center">
               <p><%= photo.description %></p>
             </div>
@@ -49,12 +50,14 @@
       <div id="albums" class="container-fluid tab-pane fade"><br>
       <%= link_to 'Add Album', new_album_path %>
         <div class="row d-flex">
-          <% for album in @albums%>
-          <%images = album.album_images%>
+          <% for album in @albums %>
+          <% images = album.album_images %>
+          <%= link_to 'Edit Album',edit_album_path(album.id)%>
           <div class="container1 w-25 p-3 " >
-            <%for image in images%>
-              <img src="<%=image.image.url%>"style="width: 30%; height: 30%" onclick="onClick(this)"class=" img-fluid modal-hover-opacity rounded-lg img-thumbnail   cc">
-            <%end%>
+            <% for image in images %>
+              <img src="<%= image.image.url %>"style="width: 30%; height: 30%" onclick="onClick(this)"class=" img-fluid modal-hover-opacity rounded-lg img-thumbnail   cc">
+            <% end %>
+
             <div class="title p-2 text-center">
               <p><%= album.description %></p>
             </div>
@@ -64,18 +67,17 @@
       </div>
       <div id="followings" class="container-fluid tab-pane fade"><br>
         <div class="row">
-        <%for following in @followings%>
+        <% for following in @followings %>
           <div class="w-25 p-2">
             <div style="background:rgb(248, 248, 248);height:240px">
               <div class="image-profile" style="height:120px;padding:10% 25% 0 25%">
                 <img src="/assets/d.jpg" class="rounded-circle" style="width:100%;height:100%">
               </div>
               <div class="name text-center"style="height:120px">
-
               </div>
             </div>
           </div>
-        <%end%>
+        <% end %>
         </div>
       </div>
       <div id="followers" class="container-fluid tab-pane fade"style="display:block"><br>
@@ -122,7 +124,6 @@
     </div>
   </div>
   <div class="col-1">
-
   </div>
 </div>
 <div id="modal01" class="modal" onclick="this.style.display='none'">
@@ -131,11 +132,8 @@
     <img id="img01" style="width:100%;">
   </div>
 </div>
-
-
 <script>function onClick(element) {
   document.getElementById("img01").src = element.src;
   document.getElementById("modal01").style.display = "block";
-
 }
 </script>

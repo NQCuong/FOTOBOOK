@@ -2,33 +2,37 @@ class AlbumsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @albums = Album.new
+    @album = Album.new
   end
 
   def create
-    @albums = current_user.albums.build(albums_params)
+    @album = current_user.albums.build(album_params)
     respond_to do |format|
-      if @albums.save
+      if @album.save
 
         #Add lines bellow
         if params[:images]
           params[:images].each { |image|
-          @albums.album_images.create(image: image)
+          @album.album_images.create(image: image)
         }
       end
 
         format.html { redirect_to profile_index_path, notice: 'Album was successfully created.' }
-        format.json { render @albums, status: :created, location: @albums }
+        format.json { render @album, status: :created, location: @album }
       else
         format.html { render :new }
-        format.json { render json: @albums.errors, status: :unprocessable_entity }
+        format.json { render json: @album.errors, status: :unprocessable_entity }
       end
     end
   end
 
+  def edit
+    @album = Album.find(params[:id])
+  end
+
   private
 
-  def albums_params
+  def album_params
     params.require(:album).permit(:title, :description)
   end
 

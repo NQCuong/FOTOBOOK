@@ -1,0 +1,28 @@
+<%= form_for(@album, html: {multipart: true}) do |f| %>
+  <div class="row">
+    <div class="col-6">
+      <div class="mb-4">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "w-100 rounded-lg" ,placeholder:"Photo Title"%>
+      </div>
+      <div class="dropdown">
+        <p>Sharing mode</p>
+        <select class="w-50 rounded-lg">
+          <option value="volvo">Public</option>
+          <option value="saab">Private</option>
+        </select>
+      </div>
+      <div>
+        <%= file_field_tag "images[]", type: :file, multiple: true, class: "upload-image m-5" %>
+        <div id="preview" class="d-flex"></div>
+      </div>
+      <%= f.submit "Save" , class: "btn btn-success mt-5" %>
+    </div>
+    <div class="col-6">
+      <div class="float-right">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "w-100 rounded-lg" ,placeholder:"Photo Description" , rows: 5 %>
+      </div>
+    </div>
+  </div>
+<% end %>

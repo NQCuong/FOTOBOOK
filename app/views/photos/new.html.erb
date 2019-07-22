@@ -1,42 +1,14 @@
-
 <div class="row" style="background-color:rgb(248, 248, 248)">
   <div class="col-1" style="min-height:1000px">
     <div class="choice mt-5">
-      <a href="<%=feed_index_path%>" >Feed</a>
+      <a href="<%= feed_index_path %>" >Feed</a>
       <a href="#">Discover</a>
     </div>
   </div>
   <div class="col-10 mt-4" style="background-color:white">
-    <%= form_for @photos do |f| %>
-    <p>New Photo</p>
+    <p class = "mt-4">New Photo</p>
     <div class="border border-bottom-1 my-4"></div>
-      <div class="row">
-        <div class="col-6">
-          <div class="mb-4">
-            <%= f.label :title %>
-            <%= f.text_field :title, class: "w-100 rounded-lg" ,placeholder:"Photo Title"%>
-          </div>
-          <div class="dropdown">
-            <p>Sharing mode</p>
-            <select class="w-50 rounded-lg">
-              <option value="volvo">Public</option>
-              <option value="saab">Private</option>
-            </select>
-          </div>
-          <div>
-            <%= f.file_field :image , class: "upload-image m-5"%>
-            <div id="preview"></div>
-          </div>
-          <%= f.submit "Save" , class: "btn btn-success mt-5"%>
-        </div>
-        <div class="col-6">
-          <div class="float-right">
-            <%= f.label :description %>
-            <%= f.text_area :description, class: "w-100 rounded-lg" ,placeholder:"Photo Description" , rows: 5 %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    <%= render 'form' %>
   </div>
   <div class="col-1">
   </div>
@@ -46,12 +18,9 @@ $(function(){
   $(".upload-image").on("change", function(){
     var preview = document.querySelector('#preview');
     var files   = document.querySelector('input[type=file]').files;
-
     function readAndPreview(file) {
-
       if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
         var reader = new FileReader();
-
         reader.addEventListener("load", function () {
           var image = new Image();
           image.height = 200;
@@ -60,12 +29,9 @@ $(function(){
           image.src = this.result;
           preview.appendChild( image );
         }, false);
-
         reader.readAsDataURL(file);
       }
-
     }
-
     if (files) {
       [].forEach.call(files, readAndPreview);
     }

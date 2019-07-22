@@ -24,14 +24,14 @@
                 <% if user_signed_in? == true %>
                   <%# <img> %>
                   <%= link_to current_user.firstname , profile_index_path %>
-                <%end%>
+                <% end %>
               </div>
               <div class="col-6">
                 <% if user_signed_in? == false %>
-                  <%= link_to 'Login' , new_user_session_path%>
+                  <%= link_to 'Login' , new_user_session_path %>
                   <% else %>
                     <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-                <%end%>
+                <% end %>
               </div>
             </div>
           </div>

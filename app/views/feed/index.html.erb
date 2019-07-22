@@ -1,7 +1,7 @@
 <div class="row" style="background-color:rgb(248, 248, 248)">
   <div class="col-1" style="min-height:1000px">
     <div class="choice mt-5">
-      <a href="<%=feed_index_path%>" >Feed</a>
+      <a href="<%= feed_index_path %>" >Feed</a>
       <a href="#">Discover</a>
     </div>
   </div>
@@ -22,31 +22,29 @@
           <div id="photo" class="container-fluid tab-pane active"><br>
             <div class="row">
             <% for user in @users %>
-              <% image = user.photos%>
-              <%for photo in image%>
+              <% image = user.photos %>
+              <% for photo in image %>
               <div class="d-flex w-50 p-2 " style="display:block;" >
                 <div class="container1 w-50">
-                  <img src="<%=photo.image.url%>"style="width:100%;height:274px;cursor:pointer" onclick="onClick(this)" class="modal-hover-opacity rounded-left">
+                  <img src="<%= photo.image.url %>"style="width:100%;height:274px;cursor:pointer" onclick="onClick(this)" class="modal-hover-opacity rounded-left">
                 </div>
                 <div class="dis p-2 " style="display:block;background-color:rgb(248, 248, 248);width:50%">
                   <div class="Head h-75 d-flex">
                     <i class="fas fa-user-circle fa-2x"></i>
-                    <%if current_user == user%>
-                    <a href="<%=profile_index_path%>"><%= user.lastname + " " + user.firstname%></a>
-                    <%else%>
-                   <a href="<%=info_profile_index_path(user.id)%>"><%= user.lastname + " " + user.firstname%></a>
+                    <% if current_user == user %>
+                    <a href="<%= profile_index_path %>"><%= user.lastname + " " + user.firstname %></a>
+                    <% else %>
+                   <a href="<%= info_profile_index_path(user.id) %>"><%= user.lastname + " " + user.firstname %></a>
                    <%end%>
                   </div>
                   <div class="footer" style="height:10%">
-
                     <i class="fas fa-heart" style="color:rgb(67, 74, 153)"></i>
-
                     999k    9:00 am 04/07/2019
                   </div>
                 </div>
               </div>
-              <%end%>
-            <%end%>
+              <% end %>
+            <% end %>
             </div>
           </div>
           <div id="album" class="container-fluid tab-pane fade"><br>
@@ -88,11 +86,8 @@
     <img id="img01" style="width:100%">
   </div>
 </div>
-
-
 <script>function onClick(element) {
   document.getElementById("img01").src = element.src;
   document.getElementById("modal01").style.display = "block";
-
 }
 </script>

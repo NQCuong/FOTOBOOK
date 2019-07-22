@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'feed#index'
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
 
 
   resources :feed
@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     post "signin" => "devise/sessions#create"
     delete "signout" => "devise/sessions#destroy"
   end
+
+  delete'/controller/remove_image/:id' => 'controller#remove_image', as: :remove_image
 
 
   post 'follow', to: "info_profile#follow"

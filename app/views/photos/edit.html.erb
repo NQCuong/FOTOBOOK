@@ -1,14 +1,14 @@
-
 <div class="row" style="background-color:rgb(248, 248, 248)">
   <div class="col-1" style="min-height:1000px">
     <div class="choice mt-5">
-      <a href="<%=feed_index_path%>" >Feed</a>
+      <a href="<%= feed_index_path %>" >Feed</a>
       <a href="#">Discover</a>
     </div>
   </div>
   <div class="col-10 mt-4" style="background-color:white">
-    <p>Edit User Profile</p>
+    <p class = "mt-4">Edit Photo</p>
     <div class="border border-bottom-1 my-4"></div>
+    <%= render 'form' %>
   </div>
   <div class="col-1">
   </div>
@@ -18,12 +18,9 @@ $(function(){
   $(".upload-image").on("change", function(){
     var preview = document.querySelector('#preview');
     var files   = document.querySelector('input[type=file]').files;
-
     function readAndPreview(file) {
-
       if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
         var reader = new FileReader();
-
         reader.addEventListener("load", function () {
           var image = new Image();
           image.height = 200;
@@ -32,12 +29,9 @@ $(function(){
           image.src = this.result;
           preview.appendChild( image );
         }, false);
-
         reader.readAsDataURL(file);
       }
-
     }
-
     if (files) {
       [].forEach.call(files, readAndPreview);
     }
