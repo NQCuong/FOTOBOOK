@@ -13,11 +13,12 @@
         </select>
       </div>
       <div>
-      <% if @photo.image.exists? %>
-        <%= image_tag @photo.image.url %><br/>
-      <% end %>
-
-          <%= f.file_field :image , class: "upload-image m-5" %>
+        <% if @photo.image.exists? %>
+          <%= image_tag @photo.image.url %><br/>
+          <%= link_to 'Remove', photo_path(@photo), class: 'btn btn-danger', method: :delete  %>
+          <%= link_to "Delete", photo_path(@photo), { method: "delete", remote: true, data: { confirm: "Are you sure?" } }%>
+        <% end %>
+        <%= f.file_field :image , class: "upload-image m-5" %>
         <div id="preview"></div>
       </div>
       <%= f.submit "Save" , class: "btn btn-success mt-5" %>

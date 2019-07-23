@@ -20,7 +20,6 @@ Rails.application.routes.draw do
     delete "signout" => "devise/sessions#destroy"
   end
 
-  delete'/controller/remove_image/:id' => 'controller#remove_image', as: :remove_image
 
 
   post 'follow', to: "info_profile#follow"

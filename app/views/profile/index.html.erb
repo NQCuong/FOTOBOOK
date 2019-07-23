@@ -1,3 +1,28 @@
+<style>
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: gray;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+</style>
 <div class="row" style="background-color:rgb(248, 248, 248)">
   <div class="col-1" style="min-height:1000px">
     <div class="choice mt-5">
@@ -9,7 +34,18 @@
     <div class="row">
       <div class="profile d-flex w-100 mt-5">
         <div class="col-3">
-          <img src="/assets/av6.jpg" class="rounded-circle ml-5" style="width:140px;height:140px">
+          <div class="container">
+            <% if current_user.avatar.exists? %>
+              <img src="<%= current_user.avatar.url %>" class = "rounded-circle "  style = " width:140px; height:140px ">
+            <% else %>
+              <img src="/assets/profile.png" class="rounded-circle " style="width:140px;height:140px">
+            <% end %>
+            <div class="overlay text-center">
+              <a href="#" >
+              <%= link_to 'Edit',profile_index_path %>
+              </a>
+            </div>
+          </div>
         </div>
         <div class="col-9">
         <!-- Nav tabs -->
@@ -56,6 +92,7 @@
           <div class="container1 w-25 p-3 " >
             <% for image in images %>
               <img src="<%= image.image.url %>"style="width: 30%; height: 30%" onclick="onClick(this)"class=" img-fluid modal-hover-opacity rounded-lg img-thumbnail   cc">
+
             <% end %>
 
             <div class="title p-2 text-center">

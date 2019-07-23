@@ -7,7 +7,6 @@ class AlbumsController < ApplicationController
 
   def create
     @album = current_user.albums.build(album_params)
-    respond_to do |format|
       if @album.save
 
         #Add lines bellow
@@ -15,19 +14,27 @@ class AlbumsController < ApplicationController
           params[:images].each { |image|
           @album.album_images.create(image: image)
         }
-      end
-
-        format.html { redirect_to profile_index_path, notice: 'Album was successfully created.' }
-        format.json { render @album, status: :created, location: @album }
-      else
-        format.html { render :new }
-        format.json { render json: @album.errors, status: :unprocessable_entity }
-      end
-    end
+        end
+        redirect_to profile_index_path
+     end
   end
 
   def edit
     @album = Album.find(params[:id])
+  end
+
+  def update
+    @album = Album.find(params[:id])
+    if @album.update(album_params)
+      if params[:images]
+        params[:images].each { |image|
+        @album.album_images.update(image: image)
+        }
+      end
+      redirect_to profile_index_path
+    else
+      render 'edit'
+    end
   end
 
   private

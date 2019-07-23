@@ -32,13 +32,19 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find(params[:id])
+    respond_to do |f|
+
       if @photo.destroy
         flash[:success] = "Successfully deleted photo!"
-        redirect_to profile_index_path
+
       else
         flash[:warning] = "Error deleting photo!"
       end
+
+      f.html { redirect_to profile_index_path }
+      f.js
     end
+  end
 
   private
 

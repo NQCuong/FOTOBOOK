@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_attached_file :avatar
+  do_not_validate_attachment_file_type :avatar
   # <------------------ADD ASSOCIATION------------------->
   has_many :photos
   has_many :albums
