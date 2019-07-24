@@ -9,7 +9,6 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
-
   <body>
     <nav class="navbar navbar-extend-sm">
       <div class="container-fluid">
@@ -22,8 +21,10 @@
             <div class="row">
               <div class="col-6">
                 <% if user_signed_in? == true %>
-                  <%# <img> %>
-                  <%= link_to current_user.firstname , profile_index_path %>
+                  <%= link_to current_user.firstname, profile_index_path %>
+                  <% if current_user.admin? %>
+                    <%= link_to "Admin Page", rails_admin_path %>
+                  <% end %>
                 <% end %>
               </div>
               <div class="col-6">

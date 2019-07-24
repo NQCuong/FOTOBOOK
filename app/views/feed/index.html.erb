@@ -30,7 +30,7 @@
                 </div>
                 <div class="dis p-2 " style="display:block;background-color:rgb(248, 248, 248);width:50%">
                   <div class="Head h-75 d-flex">
-                    <i class="fas fa-user-circle fa-2x"></i>
+                    <i class="fa fa-user-circle fa-2x"></i>
                     <% if current_user == user %>
                     <a href="<%= profile_index_path %>"><%= user.lastname + " " + user.firstname %></a>
                     <% else %>
@@ -38,8 +38,19 @@
                    <%end%>
                   </div>
                   <div class="footer" style="height:10%">
-                    <i class="fas fa-heart" style="color:rgb(67, 74, 153)"></i>
-                    999k    9:00 am 04/07/2019
+                    <% if current_user %>
+                      <% if (current_user.voted_down_on? photo) || (!ActsAsVotable::Vote.where(voter_id: current_user,votable_id: photo.id).present?) %>
+                        <%= link_to like_photo_path(photo),name: "photos#{photo.id}", class: "likes float-left" ,flag: "1", method: :post, remote: true do %>
+                        <i class="fa fa-heart-o like"></i>
+                      <% end %>
+                    <% else %>
+                      <%= link_to like_photo_path(photo),name: "photos#{photo.id}", class: "likes" ,method: :post,flag: "0", remote: true do %>
+                      <i class="far fa-heart like"></i>
+                      <% end %>
+                    <% end %>
+                    <%else%>
+                      <p class=" float-left mt-2">Like(s): </p>
+                    <% end %>
                   </div>
                 </div>
               </div>

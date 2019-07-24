@@ -4,7 +4,11 @@ class Photo < ApplicationRecord
     content_type: { content_type: /\Aimage\/.*\z/ },
     size: { less_than: 1.megabyte }
 
-# <------------------ADD ASSOCIATION------------------->
+
+  acts_as_votable
+
+
+  # <------------------ADD ASSOCIATION------------------->
 
 
   belongs_to :user

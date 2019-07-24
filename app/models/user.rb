@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   has_attached_file :avatar
   do_not_validate_attachment_file_type :avatar
+
+  acts_as_voter
+
+
   # <------------------ADD ASSOCIATION------------------->
   has_many :photos
   has_many :albums
