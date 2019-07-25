@@ -1,22 +1,18 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/user', as: 'rails_admin'
+
   root 'feed#index'
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
-
 
   resources :feed
 
   resources :profile
 
-  resources :photos do
-    resources :votes, only: [:create, :destroy]
-  end
+  resources :photos
 
-  resources :albums do
-    resources :votes, only: [:create, :destroy]
-  end
+  resources :albums
 
   resources :info_profile
 
@@ -35,7 +31,7 @@ Rails.application.routes.draw do
   post 'unfollow', to: "info_profile#unfollow"
 
 
-  post "like/photo/:id_photo", to: "index#like_photo", as: "like/photo"
-  post "like/album/:id_album", to: "index#like_album", as: "like/album"
+  post "like/photo/:id_photo", to: "feed#like_photo", as: "like_photo"
+  post "like/album/:id_album", to: "feed#like_album", as: "like_album"
 
 end
