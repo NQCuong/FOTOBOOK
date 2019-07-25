@@ -107,7 +107,7 @@
     Done !!!
 
 
-## Review 1st 20190721 - Revision 0c931ac
+## Review 2nd 20190721 - Revision 0c931ac
 
 1. Chú ý cách đặt tên cho variable (biến), method
 
@@ -174,3 +174,65 @@ Done!!!
 13. Sử dụng resource trong route. Hạn chế sử dụng custom route nếu ko cần thiết.
 
     - config/routes.rb: line 24-25
+
+----
+
+## Review 3rd 20190725 - Revision 6677534
+
+1. Khi add gem vào Gemfile nên thêm version vào, tốt nhất là dùng version mới nhất trên rubygems.org. Copy+paste version chỗ `GEMFILE:` trên rubygems.org vào Gemfile
+
+2. Code bị duplicate. Khi 2 chức năng giống hệt nhau nên viết sao để viết 1 lần và sử dụng được cho cả 2 cái thì sau này khi change sẽ dễ hơn và ít xảy ra issue hơn (vì change chỗ này nhưng ko nhớ change chỗ khác)
+
+    - app/assets/javascripts/feed.coffee
+
+3. CSS define chưa tốt, những class có property giống nhau thì nên group lại.
+
+    - app/assets/stylesheets/feed.scss
+
+    ```
+    .span-like-photo{
+      color: gray;
+    }
+    .liked-photo i{
+      color: blue;
+    }
+
+    .span-like-album{
+      color: gray;
+    }
+    .liked-album i{
+      color: blue;
+    }
+    ```
+
+    =>
+
+    ```
+    .span-like-photo, .span-like-album {
+      color: gray;
+    }
+
+    .liked-photo, .liked-album {
+      i {
+        color: blue;
+      }
+    }
+    ```
+
+4. Code không hiểu được!
+
+    - app/controllers/info_profile_controller.rb: controller này có action `edit` nhưng ko thấy `update` đâu
+
+5. App ko có cơ chế authorization phù
+
+    - app/controllers/photos_controller.rb: khi `edit`, `update`, `destroy` chỉ tìm `photo` bởi `id` thôi thì thằng user A nó sẽ dễ dàng `view/update/delete` `photo` của thằng user B
+
+6. Hạn chế sử dụng inline javascript, inline CSS, nên dùng asset pipeline của Rails
+
+    - app/views/devise/registrations/edit.html.erb
+    - app/views/feed/index.html.erb
+    - nhiều nới khác nữa
+
+7. Đang trong giai đoạn training để học thì ko nên quá phụ thuộc vào gem, cần tự tìm tòi học hỏi để có thể tự mình implement chức năng từ đầu. Như vậy mới biết nhiều và hiểu sâu hơn được. Quá phụ thuộc vào gem sẽ bào mòn tư duy lập trình của mình. Ví dụ chức năng like và admin trong app nên tự làm thay vì dùng gem.
+
+8. Gem `paperclip` đã bị deprecated, ko enn6 sử dụng gem này sau này. Dùng `carrierwave` để thay thế.
